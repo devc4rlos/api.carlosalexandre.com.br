@@ -16,9 +16,9 @@ class ResponseApiServiceProvider extends ServiceProvider
     {
         Response::macro('api', function (ResponseBuilder $responseBuilder) {
             $data = [
+                'message' => $responseBuilder->getMessage(),
                 'data' => $responseBuilder->getData(),
                 'error' => $responseBuilder->getErrors(),
-                'message' => $responseBuilder->getMessage(),
                 'code' => $responseBuilder->getCode(),
                 ...$responseBuilder->getMetadata(),
             ];
