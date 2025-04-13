@@ -27,6 +27,9 @@ class GeneralInfoController extends Controller
 
         $info->update($data);
 
-        return ResponseApi::success(new GeneralInfoResource($info), 202);
+        return ResponseApi::builder("General information updated successfully.")
+            ->setDataResource(new GeneralInfoResource($info))
+            ->setCode(200)
+            ->response();
     }
 }

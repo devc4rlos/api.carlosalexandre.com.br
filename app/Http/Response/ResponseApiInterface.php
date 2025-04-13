@@ -2,12 +2,9 @@
 
 namespace App\Http\Response;
 
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Response\Builder\ResponseBuilderInterface;
 
 interface ResponseApiInterface
 {
-    public static function success(?JsonResource $data = null, $code = 200): JsonResponse;
-
-    public static function error(string $message = '', $error = null, $code = 500): JsonResponse;
+    public static function builder(string $message): ResponseBuilderInterface;
 }

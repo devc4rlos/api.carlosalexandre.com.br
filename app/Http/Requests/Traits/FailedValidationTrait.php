@@ -10,7 +10,10 @@ trait FailedValidationTrait
 {
     protected function failedValidation(Validator $validator)
     {
-        $response = ResponseApi::error("Validation error", $validator->errors(), 422);
+        $response = ResponseApi::builder("Validation failed. Please check the required fields.")
+            ->setErrors($validator->errors()->toArray())
+            ->setCode(422)
+            ->response();
 
         throw new HttpResponseException($response);
     }
