@@ -26,7 +26,7 @@ class AuthenticationController extends Controller
         $token = $user->createToken('api-token')->plainTextToken;
 
         return ResponseApi::builder("Login successful.")
-            ->setDataResource(new AuthenticationLoginResource($token))
+            ->setDataResource(AuthenticationLoginResource::make($token))
             ->response();
     }
 
