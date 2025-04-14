@@ -1,66 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## API de contato pessoal - Carlos Alexandre
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Esta é uma API desenvolvida em Laravel para centralizar e disponibilizar minhas informações de contato profissional e redes sociais. Ela serve como um ponto de acesso confiável e atualizado para quem deseja entrar em contato comigo para oportunidades de freelas ou parcerias.
 
-## About Laravel
+> Projeto online: [https://api.carlosalexandre.com.br/v1/contacts](https://api.carlosalexandre.com.br/v1/contacts)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tecnologias Utilizadas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Laravel 12
+- Laravel Sail (Docker)
+- Laravel Sanctum (autenticação via token)
+- MySQL
+- PHP 8.2
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Funcionalidades Principais
 
-## Learning Laravel
+- Atualização de informações de contato (nome, e-mail, telefone)
+- Gerenciamento de redes sociais (criar, listar, editar e remover links)
+- Organização de links relacionados.
+- Autenticação protegida com Sanctum.
+- Respostas padronizadas.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Como rodar localmente
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Pré-requisitos
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Docker instalado na máquina
+- Git
 
-## Laravel Sponsors
+### Passo a passo
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/devc4rlos/api.carlosalexandre.com.br.git
+   cd api.carlosalexandre.com.br
+   ```
 
-### Premium Partners
+2. Copie o arquivo `.env.example` e renomeie para `.env`:
+   ```bash
+   cp .env.example .env
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3. Inicie o ambiente com o Sail:
+   ```bash
+   ./vendor/bin/sail up -d
+   ```
 
-## Contributing
+4. Instale as dependências do projeto:
+   ```bash
+   ./vendor/bin/sail composer install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. Gere a chave da aplicação:
+   ```bash
+   ./vendor/bin/sail artisan key:generate
+   ```
 
-## Code of Conduct
+6. Execute as migrações e seeders:
+   ```bash
+   ./vendor/bin/sail artisan migrate --seed
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7. A API estará disponível em `http://localhost`.
 
-## Security Vulnerabilities
+## Estrutura do Projeto
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- `app/Http/Controllers/` - Controladores da API
+- `app/Http/Requests/` - Validações customizadas das requisições
+- `app/Http/Resources/` - Formatação padronizada das respostas
+- `app/Models/` - Modelos da aplicação
+- `routes/api.php` - Rotas da API
+- `database/seeders/` - População inicial do banco de dados
 
-## License
+## Demonstração
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Esta API pode ser utilizada como ponto de contato para apresentar meu trabalho como desenvolvedor web freelancer. Ela centraliza minhas informações de contato e redes sociais, e está preparada para futuras integrações e melhorias.
+
+### Exemplo simples de requisição
+
+**Endpoint para buscar informações de contato:**
+```http
+GET https://api.carlosalexandre.com.br/v1/contacts
+```
+**Resposta:**
+```json
+{
+    "message": "Contact information retrieved successfully.",
+    "data": {
+        "name": "Carlos Alexandre",
+        "email": "dev@carlosalexandre.com.br",
+        "phone": "+5511994411592",
+        "freelance_available": true,
+        "links": [],
+        "socials": []
+    },
+    "error": null,
+    "code": 200
+}
+```
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE). Para mais informações.
+
+## Colaboradores
+
+Desenvolvido por [Carlos Alexandre](https://github.com/devc4rlos) — Full Stack Developer.  
