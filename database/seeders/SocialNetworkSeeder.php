@@ -12,7 +12,7 @@ class SocialNetworkSeeder extends Seeder
      */
     public function run(): void
     {
-        SocialNetwork::factory()->createMany([
+        $socialNetworks = [
             [
                 'name' => 'facebook',
                 'url' => 'https://www.facebook.com/devc4rlos',
@@ -43,6 +43,10 @@ class SocialNetworkSeeder extends Seeder
                 'icon' => 'https://carlosalexandre.com.br/assets/icons/telegram.png',
                 'text' => 'Telegram',
             ]
-        ]);
+        ];
+
+        foreach ($socialNetworks as $network) {
+            SocialNetwork::create($network);
+        }
     }
 }

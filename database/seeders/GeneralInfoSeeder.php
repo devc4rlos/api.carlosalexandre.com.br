@@ -16,7 +16,7 @@ class GeneralInfoSeeder extends Seeder
         $dataInit = new DateTimeImmutable('2023-05-09');
         $dataToday = new DateTimeImmutable();
 
-        GeneralInfo::factory()->create([
+        GeneralInfo::create([
             'name' => 'Carlos Alexandre',
             'email' => 'dev@carlosalexandre.com.br',
             'phone' => '+5511994411592',

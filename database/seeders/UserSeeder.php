@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        User::factory()->create([
+        User::create([
             'name' => 'Carlos Alexandre',
             'email' => config('user.default_root_email'),
             'password' => Hash::make(config('user.default_root_password')),
