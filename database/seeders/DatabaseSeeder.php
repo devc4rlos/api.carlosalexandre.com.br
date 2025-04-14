@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             GeneralInfoSeeder::class,
             UserSeeder::class,
             LinkSeeder::class,
+            SocialNetworkSeeder::class,
         ]);
     }
 }

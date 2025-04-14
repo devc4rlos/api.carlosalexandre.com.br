@@ -6,7 +6,6 @@ use App\Http\Requests\Traits\FailedValidationTrait;
 use App\Models\GeneralInfo;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Unique;
 
 class UpdateGeneralInfoRequest extends FormRequest
 {
