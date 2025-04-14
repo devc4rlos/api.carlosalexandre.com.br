@@ -20,6 +20,7 @@ class GeneralInfoFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
+            'phone' => $this->faker->phoneNumber(),
             'title' => $this->faker->title(),
             'bio' => $this->faker->text(),
             'location' => $this->faker->address(),

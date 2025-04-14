@@ -5,6 +5,8 @@ namespace App\Http\Requests\v1;
 use App\Http\Requests\Traits\FailedValidationTrait;
 use App\Models\GeneralInfo;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Unique;
 
 class UpdateGeneralInfoRequest extends FormRequest
 {
@@ -12,9 +14,12 @@ class UpdateGeneralInfoRequest extends FormRequest
 
     public function rules(): array
     {
+        $info =  GeneralInfo::first();
+
         return [
             'name' => ['nullable', 'string', 'min:2', 'max:255'],
-            'email' => ['nullable', 'email', 'min:5', 'max:255', 'unique:general_infos,email,' . GeneralInfo::first()->id],
+            'email' => ['nullable', 'email', 'min:5', 'max:255', Rule::unique('general_infos', 'email')->ignore($info->id)],
+            'phone' => ['nullable', 'string', 'min:10', 'max:255', Rule::unique('general_infos', 'phone')->ignore($info->id)],
             'title' => ['nullable', 'string', 'min:5', 'max:255'],
             'location' => ['nullable', 'string', 'min:2', 'max:255'],
             'timezone' => ['nullable', 'string', 'min:5', 'max:40'],

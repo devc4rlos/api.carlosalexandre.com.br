@@ -17,6 +17,7 @@ class GeneralInfoController extends Controller
         $data = FilledRequest::filter($request->only([
             'name',
             'email',
+            'phone',
             'title',
             'bio',
             'location',

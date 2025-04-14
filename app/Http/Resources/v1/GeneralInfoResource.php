@@ -14,6 +14,7 @@ class GeneralInfoResource extends JsonResource
         return [
             'name' => $this->name,
             'email' => $this->email,
+            'phone' => $this->phone,
             'title' => $this->title,
             'bio' => $this->bio,
             'location' => $this->location,

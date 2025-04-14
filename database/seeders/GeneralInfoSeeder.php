@@ -19,6 +19,7 @@ class GeneralInfoSeeder extends Seeder
         GeneralInfo::factory()->create([
             'name' => 'Carlos Alexandre',
             'email' => 'dev@carlosalexandre.com.br',
+            'phone' => '+5511994411592',
             'title' => 'Desenvolvedor Full-Stack',
             'bio' => 'Oi! Sou o Carlos Alexandre, programador full-stack apaixonado por transformar ideias em sistemas web que realmente funcionam. Trabalho com PHP, Laravel, MySQL e JavaScript — sempre buscando o melhor equilíbrio entre código limpo, performance e praticidade. Se você precisa de alguém pra tirar seu projeto do papel, me chama que tô aberto a freelas',
             'location' => 'São Paulo/SP',
