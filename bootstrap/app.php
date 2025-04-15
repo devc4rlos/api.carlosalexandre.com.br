@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\ForceJsonResponseMiddleware;
 use App\Http\Response\ResponseApi;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -20,14 +21,14 @@ return Application::configure(basePath: dirname(__DIR__))
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->append(ForceJsonResponseMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (AuthenticationException $e, Request $request):?JsonResponse {
-            return $request->expectsJson() ? ResponseApi::builder('You are not authorized to access this resource.')->setCode(401)->response() : null;
+            return ResponseApi::builder('You are not authorized to access this resource.')->setCode(401)->response();
         });
 
         $exceptions->render(function (NotFoundHttpException $e, Request $request):?JsonResponse {
-            return $request->expectsJson() ? ResponseApi::builder('Route not found.')->setCode(404)->response() : null;
+            return ResponseApi::builder('Route not found.')->setCode(404)->response();
         });
     })->create();
