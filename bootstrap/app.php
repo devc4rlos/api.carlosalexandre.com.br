@@ -27,8 +27,4 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (AuthenticationException $e, Request $request):?JsonResponse {
             return ResponseApi::builder('You are not authorized to access this resource.')->setCode(401)->response();
         });
-
-        $exceptions->render(function (NotFoundHttpException $e, Request $request):?JsonResponse {
-            return ResponseApi::builder('Route not found.')->setCode(404)->response();
-        });
     })->create();
