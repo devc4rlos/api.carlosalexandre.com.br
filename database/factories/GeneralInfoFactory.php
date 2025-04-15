@@ -21,7 +21,7 @@ class GeneralInfoFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
-            'title' => $this->faker->title(),
+            'title' => $this->faker->text(80),
             'bio' => $this->faker->text(),
             'location' => $this->faker->address(),
             'timezone' => $this->faker->timezone(),

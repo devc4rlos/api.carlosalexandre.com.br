@@ -14,7 +14,7 @@ Route::post('login', [AuthenticationController::class, 'login'])->name('login');
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::post('logout', [AuthenticationController::class, 'logout'])->name('logout');
-    Route::put('info', [GeneralInfoController::class, 'update'])->name('info');
+    Route::patch('info', [GeneralInfoController::class, 'update'])->name('info');
     Route::apiResource('links', LinkController::class);
     Route::apiResource('social-network', SocialNetworkController::class);
 });
