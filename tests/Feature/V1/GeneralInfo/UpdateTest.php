@@ -31,6 +31,7 @@ class UpdateTest extends TestCase
             'data' => $data,
             'error' => null,
         ]);
+        $this->assertDatabaseHas('general_infos', $data);
     }
 
     public function test_updating_name_and_email_only_succeeds()
@@ -48,6 +49,7 @@ class UpdateTest extends TestCase
             'data' => $data,
             'error' => null,
         ]);
+        $this->assertDatabaseHas('general_infos', $data);
     }
 
     public function test_updating_general_info_with_invalid_data_fails()
@@ -68,6 +70,7 @@ class UpdateTest extends TestCase
                 'phone' => [],
             ],
         ]);
+        $this->assertDatabaseMissing('general_infos', $data);
     }
 
     public function test_updating_email_with_unique_value_succeeds()
@@ -91,5 +94,6 @@ class UpdateTest extends TestCase
             ],
             'error' => null,
         ]);
+        $this->assertDatabaseHas('general_infos', $data);
     }
 }
