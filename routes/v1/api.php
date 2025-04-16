@@ -7,12 +7,12 @@ use App\Http\Controllers\v1\LinkController;
 use App\Http\Controllers\v1\SocialNetworkController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => redirect()->route('contacts'));
+Route::get('/', fn () => redirect()->route('v1.contacts'));
 
 Route::get('contacts', ContactController::class)->name('contacts');
 Route::post('login', [AuthenticationController::class, 'login'])->name('login');
 
-Route::middleware('auth:sanctum')->group(function() {
+Route::middleware(['auth:sanctum'])->group(function() {
     Route::post('logout', [AuthenticationController::class, 'logout'])->name('logout');
     Route::patch('info', [GeneralInfoController::class, 'update'])->name('info');
     Route::apiResource('links', LinkController::class);
